@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Rock Paper Scissors</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script>
+            // Begin with a function called computerPlay
+            // Randomly return either Rock, Paper, or Scissors
+            function computerPlay() {
+                const computer_choice = Math.floor(Math.random() * (4 - 1) + 1);
+                if (computer_choice === 1) {
+                    return 'rock';
+                } else if (computer_choice === 2) {
+                    return 'paper';
+                } else if (computer_choice === 3) {
+                    return 'scissors';
+                } else {
+                    alert("error with the code");
+                }
+            }
+
+            // Prompt the user to input either Rock, Paper, or Scissors
+            // Make sure the user input is case insensitive so that Rock, ROCK, and rock are all the same
+            let player_choice = prompt("Choose rock, paper, or scissors.");
+            player_choice = player_choice.toLowerCase();
+            if ((player_choice != 'rock') && (player_choice != 'paper') && (player_choice != 'scissors')) {
+                player_choice = prompt("Please choose either: rock, paper, or scissors")
+                player_choice = player_choice.toLowerCase();
+            }
+            // Create a single round function for the game to be played.
+            // This function should should contain two parameters
+            function singleRound(player_selection, computer_selection) {
+                // Create an if statement for all potential options of the game
+                // Return a string that declares the winner
+                if (player_selection === 'rock' && computer_selection === 'rock') {
+                    return "You both selected rock, game ends in a tie.";
+                } else if (player_selection === 'rock' && computer_selection === 'paper') {
+                    return "You lose, the computer selected paper!";
+                } else if (player_selection === 'rock' && computer_selection === 'scissors') {
+                    return "You win, the computer selected scissors!";
+                } else if (player_selection === 'paper' && computer_selection === 'paper') {
+                    return "You both selcted paper, game ends in a tie.";
+                } else if (player_selection === 'paper' && computer_selection === 'rock') {
+                    return "You win, the computer selected rock!";
+                } else if (player_selection === 'paper' && computer_selection === 'scissors') {
+                    return "You lose, the computer selected scissors!";
+                } else if (player_selection === 'scissors' && computer_selection === 'scissors') {
+                    return "You both selected scissors, game ends in a tie";
+                } else if (player_selection === 'scissors' && computer_selection === 'paper') {
+                    return "You win, the computer selected paper!";
+                } else if (player_selection === 'scissors' && computer_selection === 'rock') {
+                    return "You lose, the computer selected rock!";
+                }
+            }
+            // Console.log the results of the game
+            console.log(singleRound(player_choice, computerPlay()))
+
+            // Create a new function called game, include the previous function within this function
+            // Loop over the code 5 times, or call the function 5 times
+        </script>
+    </body>
+</html>
